@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Effect</title>
+
+    <style>
+        * {
+            margin: 0; padding: 0;
+        }
+        .parallax {
+            background: #222;
+            color: #fff;
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+        }
+        #paraHeader {
+            position: fixed;
+            left: 0; top: 0;
+            padding: 20px;
+            z-index: 10000;
+        }
+        #paraHeader h1 {
+            display: inline-block;
+            font-size: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 8px;
+        }
+        #paraCont {
+            
+        }
+        .contentWrap {
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+        }
+        .content__item {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .content__item:nth-child(even){
+            background: #000;
+        }
+        .content__item__num {
+            font-family: 'Lato';
+            font-size: 25vw;
+            line-height: 1;
+            opacity: 0.07;
+            position: absolute;
+            right: 5vw; top: 0vw;
+        }
+        .content__item__title {
+            font-size: 2vw;
+            text-align: left;
+            max-width: 1000px;
+            width: 50vw;
+        }
+        .content__item__imgWrap {
+            width: 50vw;
+            height: 60vh;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+        .content__item__img {
+            position: absolute;
+            left: -10%; top: -10%;
+            width: 120%;
+            height: 120%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            filter: saturate(0%);
+            transition: all 0.2s;
+        }
+        .content__item__img:hover {
+            filter: saturate(100%);
+        }
+        .content__item__desc {
+            font-size: 4vw;
+            line-height: 1.4;
+            word-break: keep-all;
+            margin-top: -6vw;
+            margin-right: -3vw;
+            position: relative;
+            z-index: 100;
+            padding-left: 30vw;
+            padding-right: 10vw;
+        }
+
+        .content__item:nth-child(1) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg1.jpg);
+        }
+        .content__item:nth-child(2) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg2.jpg);
+        }
+        .content__item:nth-child(3) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg3.jpg);
+        }
+        .content__item:nth-child(4) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg4.jpg);
+        }
+        .content__item:nth-child(5) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg5.jpg);
+        }
+        .content__item:nth-child(6) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg6.jpg);
+        }
+        .content__item:nth-child(7) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg7.jpg);
+        }
+        .content__item:nth-child(8) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg8.jpg);
+        }
+        .content__item:nth-child(9) .content__item__img {
+            background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg9.jpg);
+        }
+
+        /* nav */
+        .paraNav {
+            position: fixed;
+            right: 20px; top: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,.4);
+            padding: 15px 20px;
+            border-radius: 50px;
+            transition: top 0.4s ease;
+        }
+        .paraNav li {
+            display: inline-block;
+            list-style: none;
+        }
+        .paraNav li a {
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 30px;
+        }
+        .paraNav li.active a {
+            background: #fff;
+            color: #000;
+        }
+
+        /* info */
+        .paraScroll {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,.4);
+            color: #fff;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 12px;
+            padding: 0px 20px;
+        }
+        .paraInfo {
+            position: fixed;
+            left: 20px;
+            bottom: 70px;
+            z-index: 1000;
+            background: rgba(0,0,0,.4);
+            color: #fff;
+            padding: 20px;
+            font-size: 12px;
+            line-height: 1.8;
+            border-radius: 10px;
+        }
+        .paraInfo li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body class="parallax">
+    <header id="paraHeader">
+        <h1>Parallax Effect01</h1>
+        <p>패럴랙스 스크롤링 효과 - 가로 모드</p>
+    </header>
+    <!-- //header -->
+    <main id="paraCont">
+        <div class="contentWrap">
+            <section id="section1" class="content__item"></section>
+            <!-- //section1 -->
+            <section id="section2" class="content__item"></section>
+            <!-- //section2 -->
+            <section id="section3" class="content__item"></section>
+            <!-- //section3 -->
+            <section id="section4" class="content__item"></section>
+            <!-- //section4 -->
+            <section id="section5" class="content__item"></section>
+            <!-- //section5 -->
+            <section id="section6" class="content__item"></section>
+            <!-- //section6 -->
+            <section id="section7" class="content__item"></section>
+            <!-- //section7 -->
+            <section id="section8" class="content__item"></section>
+            <!-- //section8 -->
+            <section id="section9" class="content__item"></section>
+            <!-- //section9 -->
+        </div>
+    </main>
+    <!-- //main -->
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script>
+        const contentWrap = $(".contentWrap");
+        const contentItem = $(".content__item");
+
+        let scrollTotalWidth = contentWrap.width();
+        $("body").height(scrollTotalWidth);
+        
+        $(window).scroll(function(){
+            let scrollTop = $(window).scrollTop();
+
+            let nWidth = scrollTotalWidth - $(window).width();
+            let nHeight = $("body").height() - $(window).height();
+
+            let ratio = nWidth / nHeight;
+            let goLeft = scrollTop * ratio;
+
+            contentWrap.css("left", -goLeft);
+
+            //출력
+            $(".paraScroll span").text(scrollTop);
+            $(".scrollTotalWidth").text(scrollTotalWidth);
+            $(".bHeight").text($("body").height());
+            $(".ratio").text(ratio.toFixed(5));
+            $(".goLeft").text(parseInt(goLeft));
+        });
+
+        //출력
+        $(".scrollTotalWidth").text(scrollTotalWidth);
+    </script>
+</body>
+</html>
