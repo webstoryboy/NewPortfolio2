@@ -1,0 +1,61 @@
+.slo5{
+    position: absolute;
+    font-family: 'Mayeka';
+    font-size: 15vw;
+    z-index: 7200;
+    margin-top: -400px;
+}
+#sec5Bg {
+    position: relative;
+    width:100%;
+    background:none;
+    margin:0; padding:0;
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    z-index: 7100;
+    margin-top: -300px;
+}
+#sec6Bg {
+    position: relative;
+    width:100%;
+    z-index: 7100;
+    background:none;
+    margin:0; padding:0;
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+#sec7Bg {
+    position: relative;
+    width:100%;
+    /* z-index: 6000; */
+    background:none;
+    margin:0; padding:0;
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    transition:1s;
+}
+#sec7Bg path {
+    transition:1s;
+    animation: svgAni 7s 0 infinite alternate;
+}
+@keyframes svgAni {
+    0%{
+        d:path("M1920 541.694L-9.47128e-05 541.694L1.87183e-05 109.194C85.5 70.6941 292 -26.8058 552 109.194C812 245.194 983.892 66.1057 1252 20.6945C1621 -41.8054 1783.5 47.1946 1920 155.194L1920 541.694Z")
+    }
+    100%{
+        d:path("M1920 629H0V0.5C346 179.786 464 54.6931 684.5 27C905 -0.693129 1100.22 40.7904 1286 143C1575 302 1833 313.5 1920 242.5V629Z")
+    }
+}
+#sec8Bg {
+    position: relative;
+    width:100%;
+    z-index: 90;
+    background:#fff;
+    margin:0; padding:0;
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}

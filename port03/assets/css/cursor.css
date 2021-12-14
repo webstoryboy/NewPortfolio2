@@ -1,0 +1,14 @@
+.cursor {
+    display: inline-block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 11000;
+    user-select: none;
+    pointer-events: none;
+    background: url(../img/btnGraB.png) no-repeat center/cover;
+    /* backdrop-filter: invert(1); */
+}
